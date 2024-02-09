@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addCategory, fetchCategories } from "./operations";
-import { userCurrent, userLogin } from "../auth";
+import { userCurrent, userLogin, userLogout } from "../auth";
 
 const initialState = {
   incomes: [],
@@ -28,6 +28,9 @@ const CategorySlice = createSlice({
       .addCase(userCurrent.fulfilled, (state, { payload: { categories } }) => {
         state.incomes = categories.incomes ? categories.incomes : [];
         state.expenses = categories.expenses ? categories.expenses : [];
+      })
+      .addCase(userLogout.fulfilled, (state) => {
+        return initialState;
       })
       .addCase(fetchCategories.fulfilled, (state, { payload }) => {
         state.incomes = payload.incomes ? payload.incomes : [];

@@ -1,5 +1,11 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { userCurrent, userLogin, userRefresh, userSignup } from "./operations";
+import {
+  userCurrent,
+  userLogin,
+  userLogout,
+  userRefresh,
+  userSignup,
+} from "./operations";
 
 const initialState = {
   user: {
@@ -11,6 +17,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   sid: null,
+  isLoggedin: false,
   isRefresh: false,
   isLoading: false,
   error: null,
@@ -21,7 +28,7 @@ const AuthSlice = createSlice({
   initialState,
   selectors: {
     selectUse: (state) => state.user,
-    selectTransactionsTotal: (state) => state.transactionsTotal,
+    selectIsLoggedin: (state) => state.isLoggedin,
     selectIsRefresh: (state) => state.isRefresh,
   },
   extraReducers: (builder) => {
@@ -30,6 +37,7 @@ const AuthSlice = createSlice({
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
         state.sid = payload.sid;
+        state.isLoggedin = true;
         state.isRefresh = false;
       })
       .addCase(userRefresh.pending, (state) => {
@@ -45,9 +53,13 @@ const AuthSlice = createSlice({
         state.user.avatarUrl = payload.avatarUrl;
         state.user.currency = payload.currency;
       })
+      .addCase(userLogout.fulfilled, (state) => {
+        return initialState;
+      })
       .addMatcher(
         isAnyOf(userLogin.fulfilled, userSignup.fulfilled),
         (state, { payload }) => {
+          state.isLoggedin = true;
           state.isLoading = false;
           state.user.name = payload.user.name;
           state.user.email = payload.user.email;
@@ -64,7 +76,8 @@ const AuthSlice = createSlice({
           userLogin.pending,
           userSignup.pending,
           userRefresh.pending,
-          userCurrent.pending
+          userCurrent.pending,
+          userLogout.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -76,7 +89,8 @@ const AuthSlice = createSlice({
           userLogin.rejected,
           userSignup.rejected,
           userRefresh.rejected,
-          userCurrent.rejected
+          userCurrent.rejected,
+          userLogout.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
@@ -87,5 +101,5 @@ const AuthSlice = createSlice({
 });
 
 export const AuthReducer = AuthSlice.reducer;
-export const { selectUse, selectTransactionsTotal, selectIsRefresh } =
+export const { selectUse, selectIsLoggedin, selectIsRefresh } =
   AuthSlice.selectors;

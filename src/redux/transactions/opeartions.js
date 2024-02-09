@@ -10,7 +10,7 @@ export const fetchTransactions = createAsyncThunk(
       const { data } = await expTrackApi.get(`transactions/${type}`, {
         params,
       });
-      return data;
+      return { type, data };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

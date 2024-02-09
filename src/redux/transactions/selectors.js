@@ -1,10 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectExpenses = (state) => state.transactions.expenses;
-export const selectIncomes = (state) => state.transactions.incomes;
 export const selectFiltersCategory = (state) =>
   state.transactions.filters.category;
 export const selectFiltersDate = (state) => state.transactions.filters.date;
+export const selectExpenses = (state) => state.transactions.expenses;
+export const selectIncomes = (state) => state.transactions.incomes;
+export const selectTransactionsTotal = (state) =>
+  state.transactions.transactionsTotal;
 
 export const selectFilteredExpenses = createSelector(
   [selectExpenses, selectFiltersCategory],

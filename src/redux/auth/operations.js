@@ -1,6 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { expTrackApi, setToken } from "../../axiosConfig/expTrackApi";
-import { fetchTransactions } from "../transactions";
+import {
+  clearToken,
+  expTrackApi,
+  setToken,
+} from "../../axiosConfig/expTrackApi";
 
 export const userSignup = createAsyncThunk(
   "auth/register",
@@ -21,7 +24,20 @@ export const userLogin = createAsyncThunk(
     try {
       const { data } = await expTrackApi.post("auth/login", credentials);
       setToken(data.accessToken);
+
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const userLogout = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkAPI) => {
+    try {
+      await expTrackApi.get("auth/logout");
+      clearToken();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -46,8 +62,6 @@ export const userRefresh = createAsyncThunk(
       const { data } = await expTrackApi.post("auth/refresh", { sid });
       setToken(data.accessToken);
       await thunkAPI.dispatch(userCurrent());
-      // await thunkAPI.dispatch(fetchTransactions("expenses"));
-      // await thunkAPI.dispatch(fetchTransactions("incomes"));
 
       return data;
     } catch (error) {

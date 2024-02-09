@@ -1,6 +1,6 @@
-import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addTransaction, fetchTransactions } from "./opeartions";
-import { userCurrent, userLogin, userRefresh } from "../auth";
+import { userCurrent, userLogin, userLogout, userRefresh } from "../auth";
 
 const initialState = {
   filters: {
@@ -31,11 +31,7 @@ const TransactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, { payload }) => {
-        payload.map((transaction) =>
-          transaction.type === "incomes"
-            ? state.incomes.push(transaction)
-            : state.expenses.push(transaction)
-        );
+        state[payload.type] = payload.data;
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         if (payload.type === "incomes") {
@@ -43,10 +39,6 @@ const TransactionsSlice = createSlice({
         } else {
           state.expenses.push(payload);
         }
-      })
-      .addCase(userRefresh.fulfilled, (state) => {
-        state.incomes = [];
-        state.expenses = [];
       })
       .addCase(userCurrent.fulfilled, (state, { payload }) => {
         state.transactionsTotal.incomes = payload.transactionsTotal.incomes;
@@ -57,6 +49,9 @@ const TransactionsSlice = createSlice({
           payload.user.transactionsTotal.incomes;
         state.transactionsTotal.expenses =
           payload.user.transactionsTotal.expenses;
+      })
+      .addCase(userLogout.fulfilled, (state) => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(fetchTransactions.fulfilled, addTransaction.fulfilled),
