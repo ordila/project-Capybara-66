@@ -1,13 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { api, setToken, clearToken } from "../../axiosConfig/expenseTrackerApi"
+import { api } from "../../axiosConfig/expenseTrackerApi"
 
 export const fetchUserThunk = createAsyncThunk(
   "get user",
-  async (accessToken, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      setToken(accessToken)
       const { data } = await api.get("/users/current")
-      clearToken()
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -17,11 +15,9 @@ export const fetchUserThunk = createAsyncThunk(
 
 export const updateUsersInfoThunk = createAsyncThunk(
   "update user",
-  async ({ accessToken, reqData }, thunkAPI) => {
+  async (reqData, thunkAPI) => {
     try {
-      setToken(accessToken)
       const { data } = await api.patch("/users/info", reqData)
-      clearToken()
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -31,18 +27,16 @@ export const updateUsersInfoThunk = createAsyncThunk(
 
 export const updateUsersAvatarThunk = createAsyncThunk(
   "update users avatar",
-  async ({ avatar, accessToken }, thunkAPI) => {
+  async (avatar, thunkAPI) => {
     try {
       const formData = new FormData()
       formData.append("avatar", avatar)
 
-      setToken(accessToken)
       const { data } = await api.patch("/users/avatar", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
-      clearToken()
       return data.avatarUrl
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -52,11 +46,9 @@ export const updateUsersAvatarThunk = createAsyncThunk(
 
 export const deleteUsersAvatarThunk = createAsyncThunk(
   "delete users avatar",
-  async ({ avatarId, accessToken }, thunkAPI) => {
+  async (avatarId, thunkAPI) => {
     try {
-      setToken(accessToken)
       await api.delete(`/users/avatar/${avatarId}`)
-      clearToken()
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }

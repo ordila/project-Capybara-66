@@ -1,43 +1,80 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 import styles from "./AuthForm.module.css";
+import { Fragment, useState } from "react";
+
+import OpenEye from "../../../src/assets/icons/OpenEye.svg?react";
+import ClosedEye from "../../../src/assets/icons/ClosedEye.svg?react";
+import ErrorIcon from "../../../src/assets/icons/ErrorIcon.svg?react";
+import SuccessIcon from "../../../src/assets/icons/SuccessIcon.svg?react";
+
 export const AuthForm = ({
+  onSumbit,
   formData,
   buttonText,
-  onSumbit,
-  initialState,
-  validation,
+  errors,
+  register,
   navigation,
-  divWrapperStyles,
 }) => {
-  //   const [showPass, setShowPass] = useState(false);
-  //   const passVisibility = () => {
-  //     setShowPass((prevState) => !prevState);
-  //   };
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(validation),
-    defaultValues: initialState,
-  });
+  const location = useLocation();
+  const getClassNameDivWrapper = () => {
+    return location.pathname === "/login"
+      ? styles.inputsWrapperLogin
+      : styles.inputsWrapperRegister;
+  };
+  const classNamesDiv = getClassNameDivWrapper();
+  const getClassNameBtn = () => {
+    return location.pathname === "/login"
+      ? styles.btnLogin
+      : styles.btnLRegister;
+  };
+  const classNamesBtn = getClassNameBtn();
 
-  const onSubmitHandel = (data) => onSumbit(data);
-  //   const validationSchema = Yup.object().shape({ });
+  const [showPass, setShowPass] = useState(false);
+  const passVisibility = () => {
+    setShowPass((prevState) => !prevState);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmitHandel)} className={styles.form}>
-      <div className={styles.inputsWrapper} style={divWrapperStyles}>
+    <form onSubmit={onSumbit} className={styles.form}>
+      <div className={classNamesDiv}>
         {formData?.map((input) => (
-          <input
-            placeholder={input.placeholder}
-            key={input.name}
-            className={styles.input}
-            type={input.type}
-            name={input.name}
-          />
+          <Fragment key={input.name}>
+            <div className={styles.divWrapperRelative}>
+              <input
+                {...register(input.name)}
+                placeholder={input.placeholder}
+                className={styles.input}
+                type={
+                  input.name === "password"
+                    ? showPass
+                      ? "text"
+                      : "password"
+                    : input.type
+                }
+                name={input.name}
+              />
+              {input.name === "password" && (
+                <button
+                  type="button"
+                  className={styles.eyeIconBtn}
+                  onClick={passVisibility}
+                >
+                  {showPass ? (
+                    <OpenEye className={styles.eyeIcon} />
+                  ) : (
+                    <ClosedEye className={styles.eyeIcon} />
+                  )}
+                </button>
+              )}
+              {errors[input.name] && (
+                <p className={styles.errors}>{errors[input.name].message}</p>
+              )}
+            </div>
+          </Fragment>
         ))}
       </div>
-      <button className={styles.button} type="submit">
+      <button className={classNamesBtn} type="submit">
         {buttonText}
       </button>
       <p className={styles.text}>

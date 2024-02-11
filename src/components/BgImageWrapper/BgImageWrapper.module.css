@@ -2,10 +2,7 @@
   position: relative;
   width: 335px;
   height: 381px;
-  margin-top: 40px;
-  margin-bottom: 20px;
   border-radius: 20px;
-
   background-image: url("@/assets/images/image-mobile@1x.jpg");
 
   @media (min-device-pixel-ratio: 2),
@@ -17,8 +14,6 @@
   @media (min-width: 768px) {
     width: 704px;
     height: 482px;
-    margin-top: 36px;
-    margin-bottom: 32px;
 
     background-image: url("@/assets/images/image-tablet@1x.jpg");
     @media (min-device-pixel-ratio: 2),
@@ -28,7 +23,7 @@
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     width: 611px;
     height: 568px;
     margin: 0;
@@ -40,7 +35,16 @@
       background-image: url("@/assets/images/image-desktop@2x.jpg");
     }
   }
+  @media (max-width: 374.99px) {
+    width: 280px;
 
+    background-image: url("@/assets/images/image-mobile@1x.jpg");
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url("@/assets/images/image-mobile@2x.jpg");
+    }
+  }
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

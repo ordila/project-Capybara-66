@@ -1,0 +1,26 @@
+.container {
+  padding: 40px;
+  background-color: var(--background-expenses);
+  width: 630px;
+  border-radius: 30px;
+  
+}
+
+.text {
+  color: var(--grey-50);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0%;
+  margin-bottom: 37px;
+}
+
+.content{
+  display: flex;
+  gap: 40px;
+}
+
+.chart{
+  width:292px; 
+  height:150px;
+}

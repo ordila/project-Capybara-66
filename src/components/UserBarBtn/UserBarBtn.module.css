@@ -1,0 +1,19 @@
+.wrapperSummary {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 30px;
+  padding: 6px 16px;
+  width: 194px;
+  height: 46px;
+  background-color: #171719;
+}
+
+@media only screen and (min-width: 1440px) {
+  .wrapperSummary {
+    display: flex;
+    width: 217px;
+    height: 56px;
+  }
+}

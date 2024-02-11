@@ -1,0 +1,40 @@
+.wrapperLogo {
+  height: 63px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapperLogo {
+    text-align: start;
+  }
+}
+
+.titleLogo {
+  font-family: "Suisse Int'l", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.logo {
+  width: 27px;
+  height: 16px;
+}
+
+.sectionStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.stylesIsLogin {
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.1);
+}

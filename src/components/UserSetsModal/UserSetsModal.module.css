@@ -1,0 +1,212 @@
+.wrapperSettings {
+  position: relative;
+  border-radius: 30px;
+  width: 335px;
+  height: 444px;
+  background-color: #171719;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapperSettings {
+    width: 500px;
+    height: 477px;
+  }
+}
+
+.titleProfileSettings {
+  color: var(--paper);
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.boxForTitle {
+  display: flex;
+  text-align: left;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 40px;
+}
+
+.buttonClose {
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #171719;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .svgCloseStyles {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.userImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  background-color: rgba(12, 13, 13, 0.5);
+  margin: 40px auto 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .userImg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .svgBaseImg {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.buttonRemove {
+  border-radius: 40px;
+  padding: 8px 16px;
+  width: 77px;
+  height: 30px;
+  background-color: var(--dark-grey);
+  border: none;
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  &:hover {
+    color: var(--grey-50);
+    transition: var(--delay);
+  }
+  &:focus {
+    color: var(--grey-50);
+    transition: var(--delay);
+  }
+}
+
+.buttonSave {
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #0c0d0d;
+  border-radius: 40px;
+  padding: 14px 132px;
+  width: 295px;
+  height: 44px;
+  background-color: var(--main-green);
+  margin-top: 20px;
+  &:hover {
+    background-color: var(--main-green-hover);
+    transition: var(--delay);
+  }
+  &:focus {
+    background-color: var(--main-green-hover);
+    transition: var(--delay);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .buttonSave {
+    padding: 14px 192px;
+    width: 420px;
+    height: 47px;
+  }
+}
+
+.buttonUpload {
+  border-radius: 40px;
+  padding: 8px 16px;
+  width: 129px;
+  height: 30px;
+  background-color: var(--dark-grey);
+  border: none;
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  &:hover {
+    color: var(--grey-50);
+    transition: var(--delay);
+  }
+  &:focus {
+    color: var(--grey-50);
+    transition: var(--delay);
+  }
+}
+
+.selectStyle {
+  border: 1px solid var(--grey-40);
+  background-color: rgba(12, 13, 13, 0.5);
+  border-radius: 12px;
+  padding: 12px 56px 12px 14px;
+  width: 98px;
+  height: 42px;
+}
+
+@media only screen and (min-width: 768px) {
+  .selectStyle {
+    padding-left: 18px;
+    width: 122px;
+    height: 48px;
+  }
+}
+
+.listButtonUR {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0 auto;
+  gap: 8px;
+}
+
+.listWithSelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 40px auto 0 auto;
+}
+
+.nameUser {
+  border: 1px solid var(--grey-40);
+  border-radius: 12px;
+  padding: 12px 80px 12px 14px;
+  width: 189px;
+  height: 42px;
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: var(--paper);
+}
+
+@media only screen and (min-width: 768px) {
+  .nameUser {
+    padding: 12px 163px 12px 18px;
+    width: 290px;
+    height: 48px;
+  }
+}
+
+.backDrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

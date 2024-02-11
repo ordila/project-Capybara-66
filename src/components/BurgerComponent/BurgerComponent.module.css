@@ -1,0 +1,31 @@
+.wrapperBurger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1440px) {
+  .wrapperBurger {
+    display: none;
+  }
+}
+
+.buttonBurger {
+  background-color: var(--background-main);
+  border: none;
+  padding: 0;
+}
+
+.svgBurger {
+  stroke-width: 3px;
+  width: 36px;
+  height: 36px;
+  stroke: var(--paper);
+}
+
+@media only screen and (min-width: 768px) {
+  .svgBurger {
+    width: 44px;
+    height: 44px;
+  }
+}

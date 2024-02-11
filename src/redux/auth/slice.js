@@ -27,7 +27,7 @@ const slice = createSlice({
           state.accessToken = accessToken
           state.refreshToken = refreshToken
           state.isLoggedIn = true
-        }
+        },
       )
       .addCase(logoutThunk.fulfilled, () => initialState)
       .addCase(
@@ -36,40 +36,50 @@ const slice = createSlice({
           state.sid = sid
           state.accessToken = accessToken
           state.refreshToken = refreshToken
-        }
+          state.isLoggedIn = true
+        },
       )
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        if (payload === "reset") {
+          return initialState
+        }
+
+        state.error = payload
+        state.isLoading = false
+      })
       .addMatcher(
         isAnyOf(
           registerThunk.pending,
           loginThunk.pending,
           logoutThunk.pending,
-          refreshThunk.pending
+          refreshThunk.pending,
         ),
         state => {
           state.isLoading = true
-        }
+          state.error = null
+        },
       )
       .addMatcher(
         isAnyOf(
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           logoutThunk.fulfilled,
-          refreshThunk.fulfilled
+          refreshThunk.fulfilled,
         ),
         state => {
           state.isLoading = false
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
           loginThunk.rejected,
           registerThunk.rejected,
           logoutThunk.rejected,
-          refreshThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload
-        }
+          state.isLoading = false
+        },
       )
   },
   selectors: {

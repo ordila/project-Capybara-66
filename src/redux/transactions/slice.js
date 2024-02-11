@@ -42,6 +42,7 @@ const slice = createSlice({
         ),
         state => {
           state.isLoading = true
+          state.error = null
         }
       )
       .addMatcher(
@@ -64,6 +65,7 @@ const slice = createSlice({
         ),
         (state, { payload }) => {
           state.error = payload
+          state.isLoading = false
         }
       )
   },

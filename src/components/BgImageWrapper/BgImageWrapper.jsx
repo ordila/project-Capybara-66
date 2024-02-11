@@ -1,4 +1,4 @@
-import { DecorationTab } from "../index";
+import { DecorationTab } from "../DecorationTab/DecorationTab";
 import styles from "./BgImageWrapper.module.css";
 
 export const BgImageWrapper = () => {

@@ -60,7 +60,7 @@ img {
 
   --paper: #fafafa;
 
-  -error: #e74a3b;
+  --error: #e74a3b;
 
   --background-main: rgb(13, 13, 13);
   --background-modal: rgb(24, 24, 25);
