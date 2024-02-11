@@ -25,6 +25,11 @@ export const loginThunk = createAsyncThunk(
       setToken(data.accessToken)
       return data
     } catch (error) {
+      if (error.request.status === 403) {
+        return thunkAPI.rejectWithValue(
+          "The email doesn't exist or password is incorrect. Please try again.",
+        )
+      }
       return thunkAPI.rejectWithValue(error.message)
     }
   },
@@ -54,6 +59,9 @@ export const refreshThunk = createAsyncThunk("refresh", async (_, thunkAPI) => {
 
     return data
   } catch (error) {
+    const status = error.request.status
+    if (status !== 400) return thunkAPI.rejectWithValue("reset")
+
     return thunkAPI.rejectWithValue(error.message)
   }
 })

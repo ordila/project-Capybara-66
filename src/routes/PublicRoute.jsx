@@ -1,11 +1,10 @@
-// import { selectIsLoggedIn } from "@/redux/auth/slice";
-// import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "@/redux/auth/slice"
+import { useSelector } from "react-redux"
+import { Navigate, useLocation } from "react-router-dom"
 
-import { Navigate } from "react-router-dom";
+export const PublicRoute = ({ children }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn)
+  const location = useLocation()
 
-export const PublicRoute = ({ redirectTo = "/", children }) => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = false;
-
-  return isLoggedIn ? <Navigate to={redirectTo} /> : children;
-};
+  return isLoggedIn ? <Navigate to={location.state?.from || "/"} /> : children
+}

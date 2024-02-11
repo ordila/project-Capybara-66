@@ -1,7 +1,12 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
 
-import styles from "./AuthForm.module.css"
-import { Fragment } from "react"
+import styles from "./AuthForm.module.css";
+import { Fragment, useState } from "react";
+
+import OpenEye from "../../../src/assets/icons/OpenEye.svg?react";
+import ClosedEye from "../../../src/assets/icons/ClosedEye.svg?react";
+import ErrorIcon from "../../../src/assets/icons/ErrorIcon.svg?react";
+import SuccessIcon from "../../../src/assets/icons/SuccessIcon.svg?react";
 
 export const AuthForm = ({
   onSumbit,
@@ -11,33 +16,65 @@ export const AuthForm = ({
   register,
   navigation,
 }) => {
-  const location = useLocation()
+  const location = useLocation();
   const getClassNameDivWrapper = () => {
-    if (location.pathname === "/login") {
-      return styles.inputsWrapperLogin
-    } else {
-      return styles.inputsWrapperRegister
-    }
-  }
-  const classNamesDiv = getClassNameDivWrapper()
+    return location.pathname === "/login"
+      ? styles.inputsWrapperLogin
+      : styles.inputsWrapperRegister;
+  };
+  const classNamesDiv = getClassNameDivWrapper();
+  const getClassNameBtn = () => {
+    return location.pathname === "/login"
+      ? styles.btnLogin
+      : styles.btnLRegister;
+  };
+  const classNamesBtn = getClassNameBtn();
+
+  const [showPass, setShowPass] = useState(false);
+  const passVisibility = () => {
+    setShowPass((prevState) => !prevState);
+  };
 
   return (
     <form onSubmit={onSumbit} className={styles.form}>
       <div className={classNamesDiv}>
-        {formData?.map(input => (
+        {formData?.map((input) => (
           <Fragment key={input.name}>
-            <input
-              {...register(input.name)}
-              placeholder={input.placeholder}
-              className={styles.input}
-              type={input.type}
-              name={input.name}
-            />
-            {errors[input.name] && <p>{errors[input.name].message}</p>}
+            <div className={styles.divWrapperRelative}>
+              <input
+                {...register(input.name)}
+                placeholder={input.placeholder}
+                className={styles.input}
+                type={
+                  input.name === "password"
+                    ? showPass
+                      ? "text"
+                      : "password"
+                    : input.type
+                }
+                name={input.name}
+              />
+              {input.name === "password" && (
+                <button
+                  type="button"
+                  className={styles.eyeIconBtn}
+                  onClick={passVisibility}
+                >
+                  {showPass ? (
+                    <OpenEye className={styles.eyeIcon} />
+                  ) : (
+                    <ClosedEye className={styles.eyeIcon} />
+                  )}
+                </button>
+              )}
+              {errors[input.name] && (
+                <p className={styles.errors}>{errors[input.name].message}</p>
+              )}
+            </div>
           </Fragment>
         ))}
       </div>
-      <button className={styles.button} type="submit">
+      <button className={classNamesBtn} type="submit">
         {buttonText}
       </button>
       <p className={styles.text}>
@@ -47,5 +84,5 @@ export const AuthForm = ({
         </Link>
       </p>
     </form>
-  )
-}
+  );
+};

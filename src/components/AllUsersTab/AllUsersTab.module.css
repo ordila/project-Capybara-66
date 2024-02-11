@@ -1,10 +1,14 @@
 .usersWrapper {
   display: none;
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1440px) {
   .usersWrapper {
     display: flex;
     gap: 32px;
+    position: absolute;
+    bottom: 0;
+    left: 665px;
+    width: 367px;
   }
 }
 

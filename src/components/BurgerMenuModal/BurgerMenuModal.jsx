@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./BurgerMenuModal.module.css";
 import CloseIcon from "@/assets/icons/Close.svg?react";
-import { UserBarBtn } from "../UserBarBtn/UserBarBtn";
+import { UserBarBtnBox } from "../UserBarBtnBox/UserBarBtnBox";
 
 export const BurgerMenuModal = () => {
   return (
     <div className={styles.backDrop}>
       <div className={styles.wrapperModal}>
-        <UserBarBtn />
+        <UserBarBtnBox />
         <button className={styles.closeButton}>
           <CloseIcon className={styles.closeSvg} />
         </button>

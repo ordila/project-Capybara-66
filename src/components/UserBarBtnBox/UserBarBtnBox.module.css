@@ -1,5 +1,11 @@
+.boxAbsolute {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+}
+
 .wrapperSummary {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -10,7 +16,7 @@
   background-color: #171719;
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 768px) {
   .wrapperSummary {
     display: flex;
     width: 217px;

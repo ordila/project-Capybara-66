@@ -39,6 +39,14 @@ const slice = createSlice({
           state.isLoggedIn = true
         },
       )
+      .addCase(refreshThunk.rejected, (state, { payload }) => {
+        if (payload === "reset") {
+          return initialState
+        }
+
+        state.error = payload
+        state.isLoading = false
+      })
       .addMatcher(
         isAnyOf(
           registerThunk.pending,
@@ -48,6 +56,7 @@ const slice = createSlice({
         ),
         state => {
           state.isLoading = true
+          state.error = null
         },
       )
       .addMatcher(
@@ -66,7 +75,6 @@ const slice = createSlice({
           loginThunk.rejected,
           registerThunk.rejected,
           logoutThunk.rejected,
-          refreshThunk.rejected,
         ),
         (state, { payload }) => {
           state.error = payload

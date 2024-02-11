@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./UserBarBtn.module.css";
+import styles from "./UserBarBtnBox.module.css";
 
-export const UserBarBtn = () => {
+export const UserBarBtnBox = () => {
   return (
     <div className={styles.boxAbsolute}>
       <div className={styles.wrapperSummary}></div>
