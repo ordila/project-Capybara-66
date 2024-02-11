@@ -1,0 +1,84 @@
+.block {
+  gap: 12px;
+}
+.total_div {
+  border-radius: 20px;
+  width: 335px;
+  height: 81px;
+  background-color: #171719;
+}
+@media only screen and (min-width: 768px) {
+  .total_div {
+    border-radius: 30px;
+    width: 340px;
+    height: 121px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .total_div {
+    width: 303px;
+    height: 121px;
+  }
+}
+.block_text {
+  width: 91px;
+  height: 41px;
+  gap: 4px;
+}
+@media only screen and (min-width: 768px) {
+  .block_text {
+    gap: 7px;
+    width: 120px;
+    height: 57px;
+  }
+}
+
+.income_text {
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(250, 250, 250, 0.5);
+  margin-right: 19px;
+}
+@media only screen and (min-width: 768px) {
+  .income_text {
+    font-size: 16px;
+    margin-right: 25px;
+  }
+}
+
+.income_money {
+  font-weight: 700;
+  font-size: 18px;
+  color: #fafafa;
+}
+@media only screen and (min-width: 768px) {
+  .income_money {
+    font-size: 24px;
+  }
+}
+.box_svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  background: #0ef387;
+  gap: 12px;
+}
+@media only screen and (min-width: 768px) {
+  .box_svg {
+    width: 43px;
+    height: 43px;
+  }
+}
+.svg_expense {
+  transform: rotate(180deg);
+  width: 18px;
+  color: #0c0d0d;
+}
+
+.svg_income {
+  width: 18px;
+  color: #0c0d0d;
+}
