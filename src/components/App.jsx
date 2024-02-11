@@ -11,6 +11,7 @@ import { refreshThunk } from "@/redux/auth/operations"
 const { HOME, SIGN_IN, SIGN_UP, TRANSACTION, HISTORY } = ROUTES
 
 function App() {
+  console.log("FIX3")
   const dispatch = useDispatch()
   const refreshToken = useSelector(selectRefreshToken)
   const isLoggedIn = useSelector(selectIsLoggedIn)
