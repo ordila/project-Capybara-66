@@ -4,6 +4,7 @@ import { OverlayScrollbars } from "overlayscrollbars"
 const config = {
   overflowBehavior: {
     y: "scroll", // Вертикальный скролл всегда отображается
+    x: "scroll",
   },
 }
 

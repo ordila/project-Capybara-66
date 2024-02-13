@@ -4,9 +4,9 @@ import { DatePickerFormField } from "../DatePickerFormField/DatePickerFormField"
 import { format } from "date-fns"
 import clsx from "clsx"
 
-import css from "./TransactionsSearchTools.module.css"
-import SearchIcon from "../../../src/assets/icons/Search.svg?react"
-import CalendarAccentIcon from "../../../src/assets/icons/CalendarAccent.svg?react"
+import styles from "./TransactionsSearchTools.module.css"
+import SearchIcon from "@/assets/icons/Search.svg?react"
+import CalendarAccentIcon from "@/assets/icons/CalendarAccent.svg?react"
 
 import {
   selectFiltersCategory,
@@ -32,8 +32,8 @@ export const TransactionsSearchTools = () => {
   }
 
   return (
-    <form autoComplete='off' className={css.searchToolsControls}>
-      <div className={clsx(css.fieldWrap, css.SearchFieldWrap)}>
+    <form autoComplete='off' className={styles.searchToolsControls}>
+      <div className={clsx(styles.fieldWrap, styles.SearchFieldWrap)}>
         <label>
           <input
             type='text'
@@ -41,18 +41,18 @@ export const TransactionsSearchTools = () => {
             placeholder='Search for anything...'
             {...register("category")}
             onChange={onCategoryChange}
-            className={clsx(css.inputField, css.inputSearchField)}
+            className={clsx(styles.inputField, styles.inputSearchField)}
           />
-          <SearchIcon className={css.fieldIconAddon} />
+          <SearchIcon className={styles.fieldIconAddon} />
         </label>
       </div>
-      <div className={clsx(css.fieldWrap, css.datepickerFieldWrap)}>
+      <div className={clsx(styles.fieldWrap, styles.datepickerFieldWrap)}>
         <DatePickerFormField
           onChange={onDateChange}
           value={dateFilter}
-          className={css.inputField}
+          className={styles.inputField}
           placeholder='dd/mm/yyyy'
-          icon={<CalendarAccentIcon className={css.fieldIconAddon} />}
+          icon={<CalendarAccentIcon className={styles.fieldIconAddon} />}
         />
       </div>
     </form>

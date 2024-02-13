@@ -1,0 +1,12 @@
+.timeFieldIcon {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+
+  width: 16px;
+  height: 16px;
+
+  /* cursor: pointer; */
+
+  pointer-events: none;
+}

@@ -1,0 +1,78 @@
+.rc-time-picker-input {
+  background-color: transparent;
+  color: #fafafa;
+
+  height: 42px;
+
+  font-size: 14px;
+  line-height: 1.29;
+
+  border-radius: 12px;
+
+  padding: 12px 14px;
+
+  border: 1px solid rgba(250, 250, 250, 0.2);
+}
+
+.rc-time-picker-input:focus {
+  outline: none;
+}
+
+/*background color*/
+.rc-time-picker-panel-inner {
+  background-color: #171719;
+  box-shadow: none;
+}
+
+.rc-time-picker-panel-input {
+  background-color: transparent;
+  color: #fafafa;
+}
+
+.rc-time-picker-panel-input-wrap {
+  /* border-bottom: none; */
+  margin-bottom: 6px;
+}
+
+.rc-time-picker-panel-select {
+  border: none;
+}
+
+/* time option hover background-color */
+.rc-time-picker-panel-select-active li:hover {
+  background-color: #4dc274;
+}
+
+/* selected time option background-color */
+li.rc-time-picker-panel-select-option-selected {
+  background-color: #4dc274;
+  color: #fafafa;
+}
+
+/* styles for scroll bar */
+.rc-time-picker-panel-select {
+  /* --sb-track-color: #171719; */
+  --sb-track-color: #0c0d0d;
+  --sb-thumb-color: #4dc274;
+  --sb-size: 7px;
+}
+
+.rc-time-picker-panel-select::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.rc-time-picker-panel-select::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+.rc-time-picker-panel-select::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .rc-time-picker-panel-select {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

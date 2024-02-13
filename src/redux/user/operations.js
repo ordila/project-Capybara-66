@@ -10,7 +10,7 @@ export const fetchUserThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }
-  }
+  },
 )
 
 export const updateUsersInfoThunk = createAsyncThunk(
@@ -22,7 +22,7 @@ export const updateUsersInfoThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }
-  }
+  },
 )
 
 export const updateUsersAvatarThunk = createAsyncThunk(
@@ -31,7 +31,6 @@ export const updateUsersAvatarThunk = createAsyncThunk(
     try {
       const formData = new FormData()
       formData.append("avatar", avatar)
-
       const { data } = await api.patch("/users/avatar", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -41,7 +40,7 @@ export const updateUsersAvatarThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }
-  }
+  },
 )
 
 export const deleteUsersAvatarThunk = createAsyncThunk(
@@ -52,5 +51,5 @@ export const deleteUsersAvatarThunk = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }
-  }
+  },
 )

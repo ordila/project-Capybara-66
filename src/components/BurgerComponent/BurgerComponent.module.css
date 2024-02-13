@@ -2,11 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 20px 0 auto;
 }
 
 @media only screen and (min-width: 1440px) {
   .wrapperBurger {
     display: none;
+    margin: 0 32px 0 auto;
   }
 }
 

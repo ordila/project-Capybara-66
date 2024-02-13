@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { api } from "../../axiosConfig/expenseTrackerApi"
-import { useSelector } from "react-redux"
-import { selectFiltersDate } from "../transactionsFilters/selectors"
 
 export const createTransactionThunk = createAsyncThunk(
   "create a transaction",

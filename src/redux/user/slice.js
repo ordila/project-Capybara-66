@@ -28,11 +28,11 @@ const slice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(loginThunk.fulfilled, (_, { payload: { user } }) =>
-        spreadUser(user)
+        spreadUser(user),
       )
       .addCase(logoutThunk.fulfilled, () => initialState)
       .addCase(fetchUserThunk.fulfilled, (_, { payload }) =>
-        spreadUser(payload)
+        spreadUser(payload),
       )
       .addCase(
         updateUsersInfoThunk.fulfilled,
@@ -40,7 +40,7 @@ const slice = createSlice({
           state._id = _id
           state.name = name
           state.currency = currency
-        }
+        },
       )
       .addCase(updateUsersAvatarThunk.fulfilled, (state, { payload }) => {
         state.avatarUrl = payload
@@ -53,42 +53,42 @@ const slice = createSlice({
           fetchUserThunk.pending,
           updateUsersInfoThunk.pending,
           updateUsersAvatarThunk.pending,
-          deleteUsersAvatarThunk.pending
+          deleteUsersAvatarThunk.pending,
         ),
         state => {
           state.isLoading = true
           state.error = null
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
           fetchUserThunk.fulfilled,
           updateUsersInfoThunk.fulfilled,
           updateUsersAvatarThunk.fulfilled,
-          deleteUsersAvatarThunk.fulfilled
+          deleteUsersAvatarThunk.fulfilled,
         ),
         state => {
           state.isLoading = false
-        }
+        },
       )
       .addMatcher(
         isAnyOf(
           fetchUserThunk.rejected,
           updateUsersInfoThunk.rejected,
           updateUsersAvatarThunk.rejected,
-          deleteUsersAvatarThunk.rejected
+          deleteUsersAvatarThunk.rejected,
         ),
         (state, { payload }) => {
           state.error = payload
           state.isLoading = false
-        }
+        },
       )
   },
   selectors: {
     selectId: state => state._id,
     selectName: state => state.name,
     selectEmail: state => state.email,
-    selectAvatarUrl: state => state.email,
+    selectAvatarUrl: state => state.avatarUrl,
     selectCurrency: state => state.currency,
     selectIsLoading: state => state.isLoading,
     selectError: state => state.error,

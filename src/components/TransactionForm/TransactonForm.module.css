@@ -1,0 +1,290 @@
+.transactionFormContainer {
+  background-color: #171719;
+
+  border-radius: 30px;
+
+  padding: 40px 20px;
+  max-width: 335px;
+
+  /* border: 1px solid green; */
+
+  /* margin-top: 20px; */
+}
+
+.transactionForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  max-width: 295px;
+}
+
+.radioButtonsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.hiddenRadioButton {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  outline: 0;
+  outline-offset: 0;
+}
+
+.customRadioButton {
+  background-color: transparent;
+  border: 2px solid rgba(250, 250, 250, 0.2);
+
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+
+  display: block;
+  position: relative;
+
+  transition: border-color 100ms ease-in-out;
+}
+
+.hiddenRadioButton:checked + .customRadioButton {
+  border-color: #0ef387;
+}
+
+.customRadioButton::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background-color: #0ef387;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  transition: transform 100ms ease-in-out;
+}
+
+.hiddenRadioButton:checked + .customRadioButton::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  position: relative;
+}
+
+.dateAndTimeContainer {
+  display: flex;
+  gap: 14px;
+}
+
+.timePicker {
+  appearance: none;
+}
+
+.timeField {
+  background-color: transparent;
+}
+
+.sharedTextFieldStyles {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid black;
+  background-color: transparent;
+
+  border: 1px solid rgba(250, 250, 250, 0.2);
+
+  color: #fafafa;
+
+  outline: none;
+}
+
+.sharedTextFieldStyles:hover,
+.sharedTextFieldStyles:active,
+.sharedTextFieldStyles:focus {
+  border: 1px solid #0ef387;
+}
+
+.sumField {
+  padding-right: 52px;
+}
+
+.sumField.errorBorder {
+  padding-right: 80px;
+}
+
+.currencyLabel {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+
+  text-transform: uppercase;
+
+  color: rgba(250, 250, 250, 0.4);
+
+  pointer-events: none;
+}
+
+.sumField:not(:placeholder-shown) + .currencyLabel {
+  color: #fafafa;
+}
+
+.textArea {
+  resize: none;
+}
+
+.commentFieldWrapper {
+  overflow: hidden;
+  border-radius: 12px;
+
+  height: 64px;
+  width: 100%;
+}
+
+.commentFieldWrapper.errorBorder {
+  border: 1px solid #e74a3b;
+}
+
+.commentField {
+  height: 64px;
+  width: 100%;
+}
+
+.commentField.errorBorder {
+  padding-right: 34px;
+  /* border: none; */
+}
+
+.textArea {
+  --sb-track-color: transparent;
+  --sb-thumb-color: #4dc274;
+  --sb-size: 7px;
+}
+
+.textArea.errorBorder {
+  --sb-thumb-color: #e74a3b;
+}
+
+.textArea::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.textArea::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+.textArea::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .textArea {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.sendButton {
+  background-color: #0ef387;
+  color: #0c0d0d;
+  max-width: 122px;
+  padding: 14px 44px;
+
+  border-radius: 40px;
+
+  border: none;
+
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+
+  transition: background-color 250ms ease-in-out;
+}
+
+.sendButton:hover,
+.sendButton:active {
+  background-color: #0ebb69;
+}
+
+.error {
+  position: absolute;
+  bottom: -16px;
+  left: 18px;
+
+  font-size: 10px;
+  letter-spacing: 0;
+
+  color: #e74a3b;
+
+  height: 12px;
+}
+
+.errorBorder,
+.errorBorder:hover,
+.errorBorder:active,
+.errorBorder:focus {
+  border-color: #e74a3b;
+}
+
+.errorIcon {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+
+  fill: #e74a3b;
+
+  pointer-events: none;
+}
+
+.sumFieldErrorIcon {
+  position: absolute;
+  right: 54px;
+  bottom: 12px;
+
+  fill: #e74a3b;
+
+  pointer-events: none;
+}
+
+.textAreaErrorIcon {
+  position: absolute;
+  right: 14px;
+  top: 33px;
+
+  fill: #e74a3b;
+
+  pointer-events: none;
+}
+
+.calendarIcon {
+  stroke: #fafafa;
+
+  /* pointer-events: none; */
+}

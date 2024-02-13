@@ -1,0 +1,160 @@
+.categoryModalContainer {
+  max-width: 335px;
+
+  /* border: 1px solid #0ef387; */
+  border-radius: 30px;
+
+  padding: 40px 20px;
+
+  background-color: #171719;
+}
+
+.modalTitle {
+  color: #fafafa;
+
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+
+  margin-bottom: 20px;
+}
+
+.allCategoryLabel {
+  font-size: 12px;
+  color: rgba(250, 250, 250, 0.4);
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.emptyLabel {
+  margin-bottom: 30px;
+}
+
+.categoriesList {
+  margin-bottom: 40px;
+
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.categoriesList {
+  --sb-track-color: #0c0d0d;
+  --sb-thumb-color: #4dc274;
+  --sb-size: 7px;
+}
+
+.categoriesList::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.categoriesList::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+.categoriesList::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .categoriesList {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.addCategoryLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addCategorySpan {
+  color: #0ef387;
+
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.addInputContainer {
+  position: relative;
+}
+
+.addCategoryInput {
+  background-color: transparent;
+
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 12px;
+
+  padding: 12px 118px 12px 14px;
+  height: 42px;
+
+  color: white;
+
+  outline: none;
+
+  max-width: 295px;
+}
+
+.addCategoryInput:hover,
+.addCategoryInput:active,
+.addCategoryInput:focus {
+  border-color: #0ef387;
+}
+
+.addCategoryButton {
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+
+  height: 42px;
+
+  background-color: #0ef387;
+  max-width: 114px;
+  padding: 13px 44px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+
+  border: none;
+}
+
+.addCategoryButton:disabled {
+  background-color: #e74a3b;
+  cursor: not-allowed;
+  /* color: whitesmoke; */
+}
+
+.error {
+  position: absolute;
+  bottom: -16px;
+  left: 18px;
+
+  font-size: 10px;
+  letter-spacing: 0;
+
+  color: #e74a3b;
+
+  height: 12px;
+}
+
+.errorBorder,
+.errorBorder:hover,
+.errorBorder:active,
+.errorBorder:focus {
+  border-color: #e74a3b;
+}
+
+.errorIcon {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+
+  fill: #e74a3b;
+
+  pointer-events: none;
+}

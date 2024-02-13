@@ -1,26 +1,23 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
-import * as yup from "yup"
+import { useEffect } from "react"
+
 import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
+
 import { toast } from "react-toastify"
 
 import { AuthForm, BgImageWrapper } from "../../components/index"
 
 import { registerThunk } from "@/redux/auth/operations"
-import { selectError, selectIsLoading } from "@/redux/auth/slice"
+import { selectError } from "@/redux/auth/slice"
 import styles from "./RegisterPage.module.css"
 import { useNavigate } from "react-router"
-import { useWindowSize } from "@/hooks/useWindowSize"
+import { useWindowSizeHook } from "@/hooks/WindowSizeHook"
 
 export const RegisterPage = () => {
   const dispatch = useDispatch()
   const error = useSelector(selectError)
-
-  const [isRequested, setIsRequested] = useState(false)
-  const isLoading = useSelector(selectIsLoading)
   const navigate = useNavigate()
-  const { windowSize } = useWindowSize()
+  const { windowSize } = useWindowSizeHook()
 
   const formData = [
     { name: "name", type: "text", placeholder: "Name" },
@@ -28,38 +25,20 @@ export const RegisterPage = () => {
     { name: "password", type: "password", placeholder: "Password" },
   ]
 
-  const validationSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(8, "Password must be at least 8 characters"),
-  })
+  const { register } = useForm({})
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-  })
-
-  const onSumbit = handleSubmit(data => {
-    dispatch(registerThunk(data))
-    setIsRequested(true)
-  })
+  const onSubmit = async data => {
+    try {
+      await dispatch(registerThunk(data))
+      navigate("/login")
+    } catch (error) {
+      toast.error(`Something went wrong, please try again`)
+    }
+  }
 
   useEffect(() => {
     if (error) toast.error(error)
   }, [error])
-
-  useEffect(() => {
-    if (isRequested && !isLoading) {
-      setIsRequested(false)
-      navigate("/login")
-    }
-  }, [isLoading, isRequested, navigate])
 
   const navigation = {
     text: "Already have account?",
@@ -81,9 +60,8 @@ export const RegisterPage = () => {
           <AuthForm
             formData={formData}
             buttonText='Sign Up'
-            onSumbit={onSumbit}
+            onSubmit={onSubmit}
             register={register}
-            errors={errors}
             navigation={navigation}
           />
         </div>

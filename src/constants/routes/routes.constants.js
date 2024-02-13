@@ -4,4 +4,4 @@ export const ROUTES = {
   SIGN_UP: "register",
   TRANSACTION: "transactions",
   HISTORY: "history",
-};
+}

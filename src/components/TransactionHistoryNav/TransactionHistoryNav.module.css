@@ -28,16 +28,18 @@
   padding: 12px 21px;
   width: 125px;
   height: 43px;
-  &:hover {
+
+  &:hover,
+  &:focus,
+  &:global(.active) {
     background-color: var(--main-green);
     color: #0c0d0d;
+    transition: 0.8s ease;
   }
-  &:focus {
-    background-color: var(--main-green);
-    color: #0c0d0d;
-  }
+
   &:active {
     background-color: var(--main-green);
     color: #0c0d0d;
+    transition: 1.3s ease;
   }
 }

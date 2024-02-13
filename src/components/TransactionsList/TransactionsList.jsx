@@ -1,6 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { useScrollbar } from "@/hooks/ScrollbarHook"
 
 import {
   selectFilteredTransactions,
@@ -9,14 +10,16 @@ import {
 import { fetchTransactionsThunk } from "@/redux/transactions/operations"
 import { TransactionsListItem } from "../TransactionsListItem/TransactionsListItem"
 
-import css from "./TransactionsList.module.css"
+import styles from "./TransactionsList.module.css"
 
 export const TransactionsList = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const dataWrapper = useRef(null)
   const { transactionsType } = useParams()
   const transactions = useSelector(selectFilteredTransactions)
   const date = useSelector(selectFiltersDate)
+  const hasScroll = true
 
   useEffect(() => {
     if (transactionsType !== "expenses" && transactionsType !== "incomes") {
@@ -26,10 +29,12 @@ export const TransactionsList = () => {
     }
   }, [dispatch, navigate, transactionsType, date])
 
+  useScrollbar(dataWrapper, hasScroll)
+
   return (
-    <div className={css.TransactionsListWrap}>
-      <table className={css.transactionsList}>
-        <thead className={css.transactionsListHeader}>
+    <div className={styles.TransactionsListWrap} ref={dataWrapper}>
+      <table className={styles.transactionsList}>
+        <thead className={styles.transactionsListHeader}>
           <tr>
             <th>Category</th>
             <th>Comment</th>
@@ -39,7 +44,7 @@ export const TransactionsList = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody className={css.transactionsListBody}>
+        <tbody className={styles.transactionsListBody}>
           {transactions.map(transaction => (
             <TransactionsListItem
               key={transaction._id}

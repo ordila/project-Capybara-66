@@ -1,5 +1,6 @@
 .wrapperMain {
   padding-top: 126px;
+  padding-bottom: 126px;
 }
 @media only screen and (min-width: 768px) {
   .wrapperMain {

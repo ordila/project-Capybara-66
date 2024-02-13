@@ -63,8 +63,18 @@
   margin: 40px auto 0 auto;
 }
 
+.userAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+}
+
 @media only screen and (min-width: 768px) {
   .userImg {
+    width: 100px;
+    height: 100px;
+  }
+  .userAvatar {
     width: 100px;
     height: 100px;
   }
@@ -84,7 +94,6 @@
   height: 30px;
   background-color: var(--dark-grey);
   border: none;
-  font-family: "Suisse Intl", sans-serif;
   font-weight: 400;
   font-size: 12px;
   letter-spacing: -0.02em;
@@ -93,29 +102,21 @@
     color: var(--grey-50);
     transition: var(--delay);
   }
-  &:focus {
-    color: var(--grey-50);
-    transition: var(--delay);
-  }
 }
 
 .buttonSave {
-  font-family: "Suisse Intl", sans-serif;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.02em;
   color: #0c0d0d;
   border-radius: 40px;
+  border: none;
   padding: 14px 132px;
   width: 295px;
   height: 44px;
   background-color: var(--main-green);
   margin-top: 20px;
   &:hover {
-    background-color: var(--main-green-hover);
-    transition: var(--delay);
-  }
-  &:focus {
     background-color: var(--main-green-hover);
     transition: var(--delay);
   }
@@ -145,27 +146,6 @@
     color: var(--grey-50);
     transition: var(--delay);
   }
-  &:focus {
-    color: var(--grey-50);
-    transition: var(--delay);
-  }
-}
-
-.selectStyle {
-  border: 1px solid var(--grey-40);
-  background-color: rgba(12, 13, 13, 0.5);
-  border-radius: 12px;
-  padding: 12px 56px 12px 14px;
-  width: 98px;
-  height: 42px;
-}
-
-@media only screen and (min-width: 768px) {
-  .selectStyle {
-    padding-left: 18px;
-    width: 122px;
-    height: 48px;
-  }
 }
 
 .listButtonUR {
@@ -192,9 +172,10 @@
   height: 42px;
   font-family: "Suisse Intl", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.28571;
   color: var(--paper);
+  background-color: transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -209,4 +190,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.displayNone {
+  display: none;
 }

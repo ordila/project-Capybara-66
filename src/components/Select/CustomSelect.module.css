@@ -1,0 +1,75 @@
+.customSelectContainer {
+  display: inline-block;
+  width: 98px;
+  height: 42px;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+}
+
+.selectedText {
+  border: 1px solid var(--grey-40);
+  background-color: transparent;
+  border-radius: 12px;
+  width: 98px;
+  height: 42px;
+  color: var(--paper);
+  padding: 12px 42px 12px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedText::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  border: 7px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.selectedText.active::after {
+  top: 30%;
+  border-color: transparent transparent #fff transparent;
+}
+
+.selectOptions {
+  position: absolute;
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px 42px 12px 14px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #0c0d0d;
+}
+
+.customSelectOption {
+  list-style-type: none;
+  background-color: #0c0d0d;
+  cursor: pointer;
+  color: var(--grey-40);
+}
+.customSelectOption.active {
+  color: var(--paper);
+}
+
+.customSelectOption:hover {
+  color: var(--paper);
+}
+
+@media only screen and (min-width: 768px) {
+  .customSelectContainer {
+    width: 122px;
+    height: 48px;
+    font-size: 16px;
+  }
+  .selectedText {
+    padding: 12px 56px 12px 14px;
+    width: 122px;
+    height: 48px;
+  }
+}

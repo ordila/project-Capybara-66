@@ -3,7 +3,7 @@ import MaskedTextInput from "react-text-mask"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-import css from "./DatePickerFormField.module.css"
+import styles from "./DatePickerFormField.module.css"
 
 export const DatePickerFormField = ({
   value = Date(),
@@ -22,8 +22,8 @@ export const DatePickerFormField = ({
           {...restProps}
           showIcon
           toggleCalendarOnIconClick
-          wrapperClassName={css.datapickerWrapper}
-          calendarClassName={css.datapicker}
+          wrapperClassName={styles.datapickerWrapper}
+          calendarClassName={styles.datapicker}
           onChange={event => {
             field.onChange(event)
             onChange(event)

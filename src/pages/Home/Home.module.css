@@ -1,0 +1,22 @@
+.hero {
+  padding: 60px 0 40px 0;
+}
+
+.mobileForm {
+  margin-bottom: 40px;
+}
+
+.contianer {
+  padding-bottom: 40px;
+}
+
+@media (min-width: 1440px) {
+  .contianer {
+    display: flex;
+    gap: 44px;
+  }
+  
+  .mobileForm {
+    display: none;
+  }
+}

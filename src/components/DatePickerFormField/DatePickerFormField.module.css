@@ -64,6 +64,9 @@
   :global(.react-datepicker__day) {
     font-size: 14px;
   }
+  :global(.react-datepicker__day:hover) {
+    border-radius: 50%;
+  }
   :global(.react-datepicker__day--disabled),
   :global(.react-datepicker__day--outside-month) {
     color: rgba(12, 13, 13, 0.2);

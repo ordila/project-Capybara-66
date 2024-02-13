@@ -1,21 +1,58 @@
-import React from "react";
-import styles from "./BurgerMenuModal.module.css";
-import CloseIcon from "@/assets/icons/Close.svg?react";
-import { UserBarBtnBox } from "../UserBarBtnBox/UserBarBtnBox";
+import styles from "./BurgerMenuModal.module.css"
+import CloseIcon from "@/assets/icons/Close.svg?react"
+import { UserBarBtnBox } from "../UserBarBtnBox/UserBarBtnBox"
+import { NavLink, useNavigate } from "react-router-dom"
+import { Modal } from "../Modal/Modal"
+import { useState } from "react"
+import { SureLogOutModal } from "../SureLogOutModal/SureLogOutModal"
+import { UserSetsModal } from "../UserSetsModal/UserSetsModal"
 
-export const BurgerMenuModal = () => {
+export const BurgerMenuModal = ({
+  isOpened,
+  onClose,
+  setIsVisibleProfile,
+  setIsVisibleLogout,
+}) => {
+  const navigate = useNavigate()
+
+  const handleNavigate = to => {
+    onClose(true)
+    navigate(to)
+  }
+  if (!isOpened) return null
   return (
-    <div className={styles.backDrop}>
-      <div className={styles.wrapperModal}>
-        <UserBarBtnBox />
-        <button className={styles.closeButton}>
-          <CloseIcon className={styles.closeSvg} />
-        </button>
-        <ul className={styles.buttonList}>
-          <button className={styles.expenseButton}>All Expense</button>
-          <button className={styles.incomeButton}>All Income</button>
-        </ul>
+    <>
+      <div className={styles.specialBox}>
+        <div className={styles.backDrop} onClick={() => onClose(true)}></div>
+        <div
+          className={isOpened ? `${styles.wrapperModal} ${styles.active}` : ""}
+        >
+          <UserBarBtnBox
+            onClose={onClose}
+            setIsVisibleLogout={setIsVisibleLogout}
+            setIsVisibleProfile={setIsVisibleProfile}
+          />
+          <button className={styles.closeButton} onClick={() => onClose(true)}>
+            <CloseIcon className={styles.closeSvg} />
+          </button>
+          <ul className={styles.buttonList}>
+            <NavLink
+              className={styles.expenseButton}
+              to='/transactions/history/expenses'
+              onClick={() => handleNavigate("/transactions/history/expenses")}
+            >
+              All Expense
+            </NavLink>
+            <NavLink
+              className={styles.incomeButton}
+              to='/transactions/history/incomes'
+              onClick={() => handleNavigate("/transactions/history/incomes")}
+            >
+              All Income
+            </NavLink>
+          </ul>
+        </div>
       </div>
-    </div>
-  );
-};
+    </>
+  )
+}

@@ -1,0 +1,46 @@
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 40px;
+
+  padding-right: 8px;
+}
+
+.categoryItem:hover {
+  background-color: #121214;
+}
+
+.categoryItemActionsList {
+  display: none;
+}
+
+.categoryItem:hover .categoryItemActionsList {
+  display: flex;
+  gap: 14px;
+}
+
+.categoryActionButton {
+  border: none;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  padding: 0;
+}
+
+.categoryActionButtonIcon {
+  /* border: 1px solid green; */
+
+  stroke: #0ef387;
+}
+
+.categoryActionButton:disabled .categoryActionButtonIcon {
+  stroke: grey;
+}

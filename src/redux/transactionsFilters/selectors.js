@@ -1,6 +1,4 @@
 import { createSelector } from "@reduxjs/toolkit"
-import { format } from "date-fns"
-
 import { selectTransactions } from "../transactions/slice"
 
 export const selectFiltersCategory = state => state.transactionsFilters.category
