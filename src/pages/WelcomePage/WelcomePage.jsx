@@ -1,7 +1,7 @@
 import { AuthNav, BgImageWrapper, AllUsersTab } from "../../components/index"
 import styles from "./WelcomePage.module.css"
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
   return (
     <>
       <div className={styles.wrapperWelcomePageDesktop}>
@@ -27,3 +27,5 @@ export const WelcomePage = () => {
     </>
   )
 }
+
+export default WelcomePage

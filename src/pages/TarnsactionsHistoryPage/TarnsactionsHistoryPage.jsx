@@ -11,7 +11,7 @@ import styles from "./TarnsactionsHistoryPage.module.css"
 import { TransactionsTotal } from "@/components/TransactionsTotal/TransactionsTotal"
 import clsx from "clsx"
 
-export const TarnsactionsHistoryPage = () => {
+const TarnsactionsHistoryPage = () => {
   const { transactionsType } = useParams()
   const { expenses, incomes } = useSelector(selectTransactionsTotal)
 
@@ -55,3 +55,5 @@ export const TarnsactionsHistoryPage = () => {
     </>
   )
 }
+
+export default TarnsactionsHistoryPage

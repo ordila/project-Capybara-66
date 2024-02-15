@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./DecorationTab.module.css"
 import MoveDecorationTab from "./MoveDecorationTab"
-import ArrowTopRight from "../../../src/assets/icons/ArrowTopRight.svg?react"
+import ArrowTopRight from "@/assets/icons/ArrowTopRight.svg?react"
 
 export const DecorationTab = () => {
   return (

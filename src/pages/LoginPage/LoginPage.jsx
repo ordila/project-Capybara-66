@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom"
 
 import { useWindowSizeHook } from "@/hooks/WindowSizeHook"
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const dispatch = useDispatch()
   const error = useSelector(selectError)
 
@@ -67,3 +67,5 @@ export const LoginPage = () => {
     </>
   )
 }
+
+export default LoginPage
