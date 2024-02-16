@@ -13,7 +13,7 @@ import styles from "./RegisterPage.module.css"
 import { useNavigate } from "react-router"
 import { useWindowSizeHook } from "@/hooks/WindowSizeHook"
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
   const dispatch = useDispatch()
   const error = useSelector(selectError)
   const navigate = useNavigate()
@@ -70,3 +70,5 @@ export const RegisterPage = () => {
     </>
   )
 }
+
+export default RegisterPage

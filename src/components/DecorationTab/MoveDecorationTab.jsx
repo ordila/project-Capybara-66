@@ -79,11 +79,9 @@ const MoveDecorationTab = ({ children }) => {
       return (Math.random() * 100).toFixed(2)
     }
 
-    if (windowSize.innerWidth > 768) {
-      const intervalId = setInterval(moveDecorationTab, 50)
+    const intervalId = setInterval(moveDecorationTab, 50)
 
-      return () => clearInterval(intervalId)
-    }
+    return () => clearInterval(intervalId)
   }, [direction, windowSize.innerWidth])
 
   return children(position, balance, percentage)
