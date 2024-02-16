@@ -68,8 +68,6 @@ export const CategoriesModal = ({
         .unwrap()
         .then(() => {
           setValue("newCategory", "");
-
-          // toast.success("Category has been created successfully");
         })
         .catch((error) => toast.error(error));
     } else if (formActionType === CategoryActionType.Edit) {
@@ -93,8 +91,6 @@ export const CategoriesModal = ({
 
             setActiveCategory({});
             setValue("newCategory", "");
-
-            // toast.success("Category has been updated successfully");
           })
           .catch((error) => {
             toast.error(error);
@@ -128,10 +124,6 @@ export const CategoriesModal = ({
         removeCategory(id)
       })
       .catch((error) => {
-        // console.log(
-        //   error,
-        //   "\nCan`t remove! Some transactions depend on this category"
-        // );
         toast.error("Can`t remove! Some transactions depend on this category");
       });
   };
@@ -140,8 +132,6 @@ export const CategoriesModal = ({
     dispatch(fetchCategoriesThunk())
       .unwrap()
       .catch((error) => toast.error(error));
-    // .unwrap()
-    // .then((data) => console.log(data));
   }, [dispatch])
 
   return (

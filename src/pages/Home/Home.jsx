@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 import { TransactionForm } from "@/components/TransactionForm/TransactionForm"
 const Home = () => {
   const { transactionsType } = useParams()
-  
+
   return (
     <div className={homeStyles.contianer}>
       <div className={homeStyles.leftColumn}>

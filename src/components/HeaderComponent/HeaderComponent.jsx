@@ -7,12 +7,10 @@ import { TransactionHistoryNav } from "../TransactionHistoryNav/TransactionHisto
 import { UserBarBtn } from "../UserBarBtn/UserBarBtn"
 import { useSelector } from "react-redux"
 import { selectIsLoggedIn } from "@/redux/auth/slice"
-import { selectName } from "@/redux/user/slice"
 import { Link } from "react-router-dom"
 
 export const HeaderComponent = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn)
-  const name = useSelector(selectName)
   const classNamess = classNames(styles.sectionStyle, {
     [styles.stylesIsLogin]: isLoggedIn,
   })
