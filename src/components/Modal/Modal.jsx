@@ -22,13 +22,10 @@ export const Modal = ({ children, isOpened, onClose, zIndex = 0 }) => {
 
         idList = idList.sort((a, b) => b - a)
 
-        // console.log("Here is your list: ", idList, "\n zIndex: ", zIndex);
-
         if (zIndex === +idList[0]) {
           onClose()
         }
-      } /*else if (event.keyCode === 9) {
-      }*/
+      }
     },
     [onClose, zIndex],
   )

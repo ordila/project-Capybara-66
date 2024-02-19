@@ -14,7 +14,6 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import TimePicker from "rc-time-picker"
 import "rc-time-picker/assets/index.css"
-import { Icon } from "./TimePicker/Icon"
 import moment from "moment"
 import "./TimePicker/TimePicker.css"
 import { useDispatch } from "react-redux"
@@ -35,12 +34,6 @@ export const TransactionForm = ({
   TransactionType: Type = TransactionType.Expense,
   Date: TransactionDate = new Date().toISOString().split("T")[0],
   Time = moment(),
-  // Time = new Date()
-  //   .toISOString()
-  //   .split("T")[1]
-  //   .split(":")
-  //   .slice(0, 2)
-  //   .join(":"),
   Category = { _id: "", categoryName: "" },
   Sum = "",
   Comment = "",
@@ -115,26 +108,19 @@ export const TransactionForm = ({
   }
 
   const handleTransactionFormOnSubmit = data => {
-    //10:30:23 GMT+1
     const fullTime = data.Time.split(" ")
     data.Time = fullTime[fullTime.length - 2]
 
     data = convertData(data)
 
     if (actionType === TransactionFormActionType.Add) {
-      // alert("New transaction was added");
-      // console.log(data);
-
       dispatch(createTransactionThunk(data))
         .unwrap()
         .then(() => {
-          /* toast.success("New transaction added successfully!") */
           resetForm()
         })
         .catch(error => toast.error(error))
     } else if (actionType === TransactionFormActionType.Save) {
-      // alert("New transaction was saved");
-      // console.log(data);
       toast.success("Transaction changes saved successfully!")
 
       onSubmit(data)
@@ -173,8 +159,6 @@ export const TransactionForm = ({
   }
 
   const handleEditCategory = (category, newCategory) => {
-    // console.log("Old category: ", category);
-    // console.log("New category: ", newCategory);
     const categoryName = getValues(TransactionFormFields.Category)
     if (category.name === categoryName) {
       setValue(TransactionFormFields.Category, newCategory.name)
@@ -245,14 +229,6 @@ export const TransactionForm = ({
                 control={control}
                 render={({ field }) => (
                   <TimePicker
-                    // inputIcon={
-                    //   <Clock
-                    //     className={clsx(
-                    //       stylesIcon.timeFieldIcon,
-                    //       styles.clockIcon,
-                    //     )}
-                    //   />
-                    // }
                     clearIcon={
                       <Clock
                         className={clsx(
@@ -268,7 +244,6 @@ export const TransactionForm = ({
                   />
                 )}
               />
-              {/* <input type="time" {...register(TransactionFormFields.Time)} /> */}
             </div>
           </div>
           {/* Category */}
