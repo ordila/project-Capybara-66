@@ -33,6 +33,20 @@ const slice = createSlice({
       .addCase(fetchTransactionsThunk.fulfilled, (state, { payload }) => {
         state.list = payload
       })
+      .addCase(deleteTransactionThunk.fulfilled, (state, { payload }) => {
+        state.list = state.list.filter(
+          transaction => transaction._id !== payload,
+        )
+      })
+      .addCase(createTransactionThunk.fulfilled, (state, { payload }) => {
+        state.list.push(payload)
+        state.transactionsTotal[payload.type] += payload.sum
+      })
+      .addCase(updateTransactionThunk.fulfilled, (state, { payload }) => {
+        state.list = state.list.map(transaction =>
+          transaction._id === payload._id ? payload : transaction,
+        )
+      })
       .addMatcher(
         isAnyOf(
           createTransactionThunk.pending,

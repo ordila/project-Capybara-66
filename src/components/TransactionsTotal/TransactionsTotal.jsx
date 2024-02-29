@@ -11,13 +11,12 @@ import styles from "./TransactionsTotal.module.css"
 export const TransactionsTotal = ({ className, title, amount }) => {
   const currency = useSelector(selectCurrency)
   const currencySymbol = decode(CURRENCY_SYMBOL[currency?.toUpperCase()])
-  const amountParts = amount?.toFixed(3).split(".")
-
+  const moneyDeal = title.split(" ")[1].toLowerCase() + "s"
   return (
-    <WidgetContainer className={className}>
+    <WidgetContainer className={className} moneyDeal={moneyDeal}>
       <div className={styles.flexWrap}>
         <div className={styles.iconWrap}>
-          {title.toLowerCase() === "all expenses" ? (
+          {title.toLowerCase() === "all expense" ? (
             <ArrowDownLeft className={styles.icon} />
           ) : (
             <ArrowTopRight className={styles.icon} />
@@ -26,10 +25,9 @@ export const TransactionsTotal = ({ className, title, amount }) => {
         <div className={styles.content}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>
-            {`${currencySymbol}${`${amountParts[0]}.${amountParts[1].padEnd(
-              3,
-              0,
-            )}`}`}
+            {`${currencySymbol}${amount
+              .toFixed()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`}
           </p>
         </div>
       </div>

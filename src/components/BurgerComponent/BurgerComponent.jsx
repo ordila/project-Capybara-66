@@ -3,7 +3,7 @@ import styles from "./BurgerComponent.module.css"
 import BurgerIcon from "@/assets/icons/Burger.svg?react"
 import { BurgerMenuModal } from "../BurgerMenuModal/BurgerMenuModal"
 import { Modal } from "../Modal/Modal"
-import { SureLogOutModal } from "../SureLogOutModal/SureLogOutModal"
+import { SureModal } from "../SureModal/SureModal"
 import { UserSetsModal } from "../UserSetsModal/UserSetsModal"
 
 export const BurgerComponent = () => {
@@ -32,7 +32,7 @@ export const BurgerComponent = () => {
         isOpened={isVisibleLogout}
         onClose={() => setIsVisibleLogout(false)}
       >
-        <SureLogOutModal closeModal={setIsVisibleLogout} />
+        <SureModal text={'Log out'} closeModal={setIsVisibleLogout} />
       </Modal>
       <Modal
         isOpened={isVisibleProfile}

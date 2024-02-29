@@ -2,10 +2,6 @@ import styles from "./BurgerMenuModal.module.css"
 import CloseIcon from "@/assets/icons/Close.svg?react"
 import { UserBarBtnBox } from "../UserBarBtnBox/UserBarBtnBox"
 import { NavLink, useNavigate } from "react-router-dom"
-import { Modal } from "../Modal/Modal"
-import { useState } from "react"
-import { SureLogOutModal } from "../SureLogOutModal/SureLogOutModal"
-import { UserSetsModal } from "../UserSetsModal/UserSetsModal"
 
 export const BurgerMenuModal = ({
   isOpened,

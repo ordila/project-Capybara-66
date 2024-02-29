@@ -19,7 +19,7 @@ export const ExpensesDonut = ({ data, colors }) => {
           stroke='none'
         >
           {data?.map((item, index) => (
-            <Cell key={item._id} fill={colors[index]} />
+            <Cell key={item._id} fill={colors[index]} className={styles.cell} />
           ))}
         </Pie>
       </PieChart>

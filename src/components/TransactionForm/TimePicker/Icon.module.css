@@ -1,7 +1,7 @@
 .timeFieldIcon {
   position: absolute;
-  top: 13px;
-  right: 14px;
+  top: 13px !important;
+  right: 14px !important;
 
   width: 16px;
   height: 16px;
@@ -9,4 +9,11 @@
   /* cursor: pointer; */
 
   pointer-events: none;
+  fill: white;
+}
+@media screen and (min-width: 768px) {
+  .timeFieldIcon {
+    top: 15.5px !important;
+    right: 14px !important;
+  }
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./DecorationTab.module.css";
-import MoveDecorationTab from "./MoveDecorationTab";
-import ArrowTopRight from "../../../src/assets/icons/ArrowTopRight.svg?react";
+import React from "react"
+import styles from "./DecorationTab.module.css"
+import MoveDecorationTab from "./MoveDecorationTab"
+import ArrowTopRight from "@/assets/icons/ArrowTopRight.svg?react"
 
 export const DecorationTab = () => {
   return (
@@ -19,7 +19,7 @@ export const DecorationTab = () => {
               <ArrowTopRight className={styles.arrowTopRight} />
             </div>
             <div>
-              <h3 className={styles.text}>Your balance</h3>
+              <h1 className={styles.text}>Your balance</h1>
               <ul className={styles.incomeList}>
                 <li className={styles.income}>&#36;{balance}</li>
                 <li className={styles.icomePercentage}>
@@ -31,5 +31,5 @@ export const DecorationTab = () => {
         </div>
       )}
     </MoveDecorationTab>
-  );
-};
+  )
+}

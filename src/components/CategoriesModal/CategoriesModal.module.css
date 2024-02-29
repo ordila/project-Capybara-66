@@ -1,12 +1,26 @@
 .categoryModalContainer {
-  max-width: 335px;
-
   /* border: 1px solid #0ef387; */
   border-radius: 30px;
 
   padding: 40px 20px;
 
   background-color: #171719;
+
+  height: 400px;
+}
+
+@media only screen and (max-width: 767px) {
+  .categoryModalContainer {
+    max-width: 335px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .categoryModalContainer {
+    width: 100%;
+    padding: 40px 40px;
+    height: 461px;
+  }
 }
 
 .modalTitle {
@@ -20,6 +34,12 @@
   margin-bottom: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .modalTitle {
+    font-size: 28px;
+  }
+}
+
 .allCategoryLabel {
   font-size: 12px;
   color: rgba(250, 250, 250, 0.4);
@@ -28,14 +48,23 @@
 }
 
 .emptyLabel {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  margin-bottom: 142px;
 }
 
 .categoriesList {
-  margin-bottom: 40px;
-
+  margin-bottom: 22px;
+  height: 160px;
   max-height: 160px;
   overflow-y: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .categoriesList {
+    height: 100%;
+    max-height: 195px;
+    margin-bottom: 40px;
+  }
 }
 
 .categoriesList {
@@ -77,13 +106,19 @@
   letter-spacing: -0.02em;
 }
 
+@media only screen and (min-width: 768px) {
+  .addCategorySpan {
+    font-size: 16px;
+  }
+}
+
 .addInputContainer {
   position: relative;
 }
 
 .addCategoryInput {
   background-color: transparent;
-
+  width: 100%;
   border: 1px solid rgba(250, 250, 250, 0.2);
   border-radius: 12px;
 
@@ -93,8 +128,6 @@
   color: white;
 
   outline: none;
-
-  max-width: 295px;
 }
 
 .addCategoryInput:hover,

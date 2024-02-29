@@ -1,5 +1,5 @@
 .TransactionsListWrap {
-  height: 386px;
+  height: 390px;
 
   :global(.os-scrollbar-vertical) {
     padding: 70px 0 0 2px;

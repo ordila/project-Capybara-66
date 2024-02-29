@@ -11,3 +11,6 @@
   left: 40%;
   line-height: 1.29;
 }
+.cell {
+  outline: none;
+}

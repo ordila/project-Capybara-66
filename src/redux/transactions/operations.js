@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { api } from "../../axiosConfig/expenseTrackerApi"
+import { fetchUserThunk } from "../user/operations"
 
 export const createTransactionThunk = createAsyncThunk(
   "create a transaction",
@@ -31,6 +32,8 @@ export const updateTransactionThunk = createAsyncThunk(
   async ({ reqData, id, type }, thunkAPI) => {
     try {
       const { data } = await api.patch(`/transactions/${type}/${id}`, reqData)
+      thunkAPI.dispatch(fetchUserThunk())
+
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
@@ -43,6 +46,9 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await api.delete(`/transactions/${id}`)
+      thunkAPI.dispatch(fetchUserThunk())
+
+      return id
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message)
     }

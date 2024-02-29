@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom"
 
 import { useWindowSizeHook } from "@/hooks/WindowSizeHook"
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const dispatch = useDispatch()
   const error = useSelector(selectError)
 
@@ -29,7 +29,7 @@ export const LoginPage = () => {
   const onSubmit = async data => {
     try {
       await dispatch(loginThunk(data))
-      navigate("/")
+      navigate("/transactions/expenses")
     } catch (error) {
       toast.error(`Something went wrong, please try again`)
     }
@@ -67,3 +67,5 @@ export const LoginPage = () => {
     </>
   )
 }
+
+export default LoginPage

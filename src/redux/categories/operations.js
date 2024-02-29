@@ -34,7 +34,6 @@ export const updateCategoryThunk = createAsyncThunk(
       });
       return { ...data, type };
     } catch (error) {
-      // console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

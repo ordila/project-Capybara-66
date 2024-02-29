@@ -167,7 +167,7 @@
 .nameUser {
   border: 1px solid var(--grey-40);
   border-radius: 12px;
-  padding: 12px 80px 12px 14px;
+  padding: 12px 14px;
   width: 189px;
   height: 42px;
   font-family: "Suisse Intl", sans-serif;
@@ -176,11 +176,16 @@
   line-height: 1.28571;
   color: var(--paper);
   background-color: transparent;
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--main-green);
+  }
 }
 
 @media only screen and (min-width: 768px) {
   .nameUser {
-    padding: 12px 163px 12px 18px;
+    padding: 12px 18px;
     width: 290px;
     height: 48px;
   }

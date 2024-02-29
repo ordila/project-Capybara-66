@@ -1,21 +1,21 @@
-import TransactionType from "../../constants/TransactionType";
-import styles from "./CategoriesModal.module.css";
-import { useEffect, useState } from "react";
-import { CategoryItem } from "./CategoryItem/CategoryItem";
-import CategoryActionType from "../../constants/CategoryActionType";
-import { useDispatch, useSelector } from "react-redux";
+import TransactionType from "../../constants/TransactionType"
+import styles from "./CategoriesModal.module.css"
+import { useEffect, useState } from "react"
+import { CategoryItem } from "./CategoryItem/CategoryItem"
+import CategoryActionType from "../../constants/CategoryActionType"
+import { useDispatch, useSelector } from "react-redux"
 import {
   createCategoryThunk,
   deleteCategoryThunk,
   fetchCategoriesThunk,
   updateCategoryThunk,
-} from "@/redux/categories/operations";
-import { selectExpenses, selectIncomes } from "@/redux/categories/slice";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import clsx from "clsx";
-import { toast } from "react-toastify";
+} from "@/redux/categories/operations"
+import { selectExpenses, selectIncomes } from "@/redux/categories/slice"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import clsx from "clsx"
+import { toast } from "react-toastify"
 
 export const CategoriesModal = ({
   transactionType = TransactionType.Expense,
@@ -23,22 +23,24 @@ export const CategoriesModal = ({
   removeCategory,
   onEditCategory,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const categories = useSelector(
-    transactionType === TransactionType.Expense ? selectExpenses : selectIncomes
-  );
+    transactionType === TransactionType.Expense
+      ? selectExpenses
+      : selectIncomes,
+  )
 
   const schema = yup.object({
     newCategory: yup
       .string()
       .transform((value, originalValue) => {
-        return originalValue.trim() === "" ? undefined : value;
+        return originalValue.trim() === "" ? undefined : value
       })
       .required("This field can't be empty")
       .min(2, "This field value must be at least 2 characters")
       .max(16, "This field value must be at most 16 characters"),
-  });
+  })
 
   const {
     register,
@@ -47,14 +49,14 @@ export const CategoriesModal = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
-  const [formActionType, setFormActionType] = useState(CategoryActionType.Add);
-  const [activeCategory, setActiveCategory] = useState({});
-  const [isBeingEdited, setIsBeingEdited] = useState(false);
+  const [formActionType, setFormActionType] = useState(CategoryActionType.Add)
+  const [activeCategory, setActiveCategory] = useState({})
+  const [isBeingEdited, setIsBeingEdited] = useState(false)
 
-  const handleAddCategoryFormOnSubmit = (data) => {
-    const newCategoryName = data.newCategory;
+  const handleAddCategoryFormOnSubmit = data => {
+    const newCategoryName = data.newCategory
 
     if (formActionType === CategoryActionType.Add) {
       dispatch(
@@ -62,66 +64,75 @@ export const CategoriesModal = ({
           type: transactionType + "s",
           categoryName: newCategoryName,
         })
-      );
-      setValue("newCategory", "");
+      )
+        .unwrap()
+        .then(() => {
+          setValue("newCategory", "");
+        })
+        .catch((error) => toast.error(error));
     } else if (formActionType === CategoryActionType.Edit) {
-      setIsBeingEdited(false);
-      setFormActionType(CategoryActionType.Add);
-
       if (newCategoryName !== activeCategory.name) {
         dispatch(
           updateCategoryThunk({
             id: activeCategory.id,
             newName: newCategoryName,
             type: transactionType + "s",
-          })
+          }),
         )
           .unwrap()
-          .then(() =>
+          .then(() => {
+            setIsBeingEdited(false);
+            setFormActionType(CategoryActionType.Add);
+
             onEditCategory(activeCategory, {
               id: activeCategory.id,
               name: newCategoryName,
-            })
-          );
+            });
+
+            setActiveCategory({});
+            setValue("newCategory", "");
+          })
+          .catch((error) => {
+            toast.error(error);
+          });
+      } else {
+        setIsBeingEdited(false);
+        setFormActionType(CategoryActionType.Add);
+
+        setActiveCategory({});
+        setValue("newCategory", "");
       }
-
-      setActiveCategory({});
-      setValue("newCategory", "");
     }
-  };
+  }
 
-  const editCategory = (category) => {
-    setIsBeingEdited(true);
-    setFormActionType(CategoryActionType.Edit);
-    setActiveCategory(category);
-    setValue("newCategory", category.name);
+  const editCategory = category => {
+    setIsBeingEdited(true)
+    setFormActionType(CategoryActionType.Edit)
+    setActiveCategory(category)
+    setValue("newCategory", category.name)
 
     const editCategoryName_TextBox = document.querySelector(
-      `.${styles.addCategoryInput}`
-    );
-    editCategoryName_TextBox.focus();
-  };
+      `.${styles.addCategoryInput}`,
+    )
+    editCategoryName_TextBox.focus()
+  }
 
-  const deleteCategory = (id) => {
+  const deleteCategory = id => {
     dispatch(deleteCategoryThunk({ id, type: transactionType + "s" }))
       .unwrap()
-      .then((response) => {
-        removeCategory(id);
+      .then(response => {
+        removeCategory(id)
       })
       .catch((error) => {
-        console.log(
-          error,
-          "\nCan`t remove! Some transactions depend on this category"
-        );
         toast.error("Can`t remove! Some transactions depend on this category");
       });
   };
 
   useEffect(() => {
-    dispatch(fetchCategoriesThunk());
-    // .unwrap()
-    // .then((data) => console.log(data));
-  }, [dispatch]);
+    dispatch(fetchCategoriesThunk())
+      .unwrap()
+      .catch((error) => toast.error(error));
+  }, [dispatch])
 
   return (
     <div className={styles.categoryModalContainer}>
@@ -149,17 +160,17 @@ export const CategoriesModal = ({
         <label className={styles.addCategoryLabel}>
           <span className={styles.addCategorySpan}>
             {formActionType === CategoryActionType.Add
-              ? "New category"
-              : "Edit category"}
+              ? "New Category"
+              : "Edit Category"}
           </span>
           <div className={styles.addInputContainer}>
             <input
               className={clsx(styles.addCategoryInput, {
                 [styles.errorBorder]: errors.newCategory,
               })}
-              type="text"
-              placeholder="Enter the text"
-              autoComplete="off"
+              type='text'
+              placeholder='Enter the text'
+              autoComplete='off'
               {...register("newCategory")}
             />
             <button
@@ -179,5 +190,5 @@ export const CategoriesModal = ({
         </label>
       </form>
     </div>
-  );
-};
+  )
+}

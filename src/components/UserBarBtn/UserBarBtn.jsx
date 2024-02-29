@@ -6,7 +6,7 @@ import UserBarLogOutIcon from "@/assets/icons/UserBarLogOutIcon.svg?react"
 import clsx from "clsx"
 import { useSelector } from "react-redux"
 import { selectAvatarUrl, selectName } from "@/redux/user/slice"
-import { SureLogOutModal } from "../SureLogOutModal/SureLogOutModal"
+import { SureModal } from "../SureModal/SureModal"
 import { Modal } from "../Modal/Modal"
 import { UserSetsModal } from "../UserSetsModal/UserSetsModal"
 
@@ -36,7 +36,9 @@ export const UserBarBtn = () => {
         ) : (
           <span className={styles.spanFirstL}>{altText}</span>
         )}
-        <p className={styles.nameUserStyle}>{name}</p>
+        <p className={styles.nameUserStyle}>
+          {name?.length > 12 ? `${name.slice(0, 10)}...` : name}
+        </p>
         <button
           className={clsx({
             [styles.buttonDropDown]: true,
@@ -74,7 +76,7 @@ export const UserBarBtn = () => {
           isOpened={isVisibleLogout}
           onClose={() => setIsVisibleLogout(false)}
         >
-          <SureLogOutModal closeModal={setIsVisibleLogout} />
+          <SureModal text={"Log out"} closeModal={setIsVisibleLogout} />
         </Modal>
         <Modal
           isOpened={isVisibleProfile}

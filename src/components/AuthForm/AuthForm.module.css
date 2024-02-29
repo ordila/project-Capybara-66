@@ -105,6 +105,10 @@
   position: relative;
 }
 .eyeIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   position: absolute;
   background-color: transparent;
   border: transparent;
@@ -113,7 +117,7 @@
   right: 18px;
   top: 13px;
 }
-@media only screen and (min-width: 768x) {
+@media only screen and (min-width: 768px) {
   .eyeIconBtn {
     width: 20px;
     height: 20px;
@@ -123,7 +127,7 @@
   width: 16px;
   height: 16px;
 }
-@media only screen and (min-width: 768x) {
+@media only screen and (min-width: 768px) {
   .eyeIcon {
     width: 20px;
     height: 20px;

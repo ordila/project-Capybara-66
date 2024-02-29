@@ -9,6 +9,13 @@
   border-radius: 50%;
   border: none;
 
+  .pensilIcon {
+    stroke: rgb(12, 13, 13);
+  }
+  .trashIcon {
+    stroke: rgb(250, 250, 250);
+  }
+
   .pensilIcon,
   .trashIcon {
     width: 12px;

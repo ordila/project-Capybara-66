@@ -1,4 +1,13 @@
-import styles from "./AllUsersTab.module.css";
+import styles from "./AllUsersTab.module.css"
+
+import user1Img1 from "@/assets/images/women1@1x.png"
+import user1Img2 from "@/assets/images/women1@2x.png"
+
+import user2Img1 from "@/assets/images/men@1x.png"
+import user2Img2 from "@/assets/images/men@2x.png"
+
+import user3Img1 from "@/assets/images/women2@1x.png"
+import user3Img2 from "@/assets/images/women2@2x.png"
 
 export const AllUsersTab = () => {
   return (
@@ -7,48 +16,39 @@ export const AllUsersTab = () => {
         <li className={styles.usersPhotosElem}>
           <picture>
             <source
-              srcSet="
-            ../../../src/assets/images/women1@1x.png 1x,
-            ../../../src/assets/images/women1@2x.png 2x
-          "
-              type="image/png"
+              srcSet={`${user1Img1} 1x, ${user1Img2} 2x`}
+              type='image/png'
             />
             <img
               className={styles.userPhoto}
-              src="../../../src/assets/images/women1@1x.png"
-              alt="Photo of the user"
+              src={user1Img1}
+              alt='Photo of the user'
             />
           </picture>
         </li>
         <li className={styles.usersPhotosElemTwo}>
           <picture>
             <source
-              srcSet="
-            ../../../src/assets/images/men@1x.png 1x,
-            ../../../src/assets/images/men@2x.png 2x
-          "
-              type="image/png"
+              srcSet={`${user2Img1} 1x, ${user2Img2} 2x`}
+              type='image/png'
             />
             <img
               className={styles.userPhoto}
-              src="../../../src/assets/images/men@1x.png"
-              alt="Photo of the user"
+              src={user2Img1}
+              alt='Photo of the user'
             />
           </picture>
         </li>
         <li>
           <picture>
             <source
-              srcSet="
-            ../../../src/assets/images/women2@1x.png 1x,
-            ../../../src/assets/images/women2@2x.png 2x
-          "
-              type="image/png"
+              srcSet={`${user3Img1} 1x, ${user3Img2} 2x`}
+              type='image/png'
             />
             <img
               className={styles.userPhoto}
-              src="../../../src/assets/images/women2@1x.png"
-              alt="Photo of the user"
+              src={user3Img1}
+              alt='Photo of the user'
             />
           </picture>
         </li>
@@ -60,5 +60,5 @@ export const AllUsersTab = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}

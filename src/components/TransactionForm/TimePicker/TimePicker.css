@@ -14,6 +14,15 @@
   border: 1px solid rgba(250, 250, 250, 0.2);
 }
 
+@media only screen and (min-width: 768px) {
+  .rc-time-picker-input {
+    font-size: 16px;
+    height: 48px;
+    padding: 12px 18px;
+    /* line-height: 1.29; */
+  }
+}
+
 .rc-time-picker-input:focus {
   outline: none;
 }
@@ -22,6 +31,8 @@
 .rc-time-picker-panel-inner {
   background-color: #171719;
   box-shadow: none;
+  margin-top: 50px;
+  margin-right: 10px;
 }
 
 .rc-time-picker-panel-input {
@@ -36,6 +47,7 @@
 
 .rc-time-picker-panel-select {
   border: none;
+  width: 52px;
 }
 
 /* time option hover background-color */

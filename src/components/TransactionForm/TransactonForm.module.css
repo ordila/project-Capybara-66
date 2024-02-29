@@ -3,12 +3,21 @@
 
   border-radius: 30px;
 
-  padding: 40px 20px;
-  max-width: 335px;
+  padding: 28px 20px;
 
-  /* border: 1px solid green; */
+  font-size: 14px;
+}
 
-  /* margin-top: 20px; */
+@media only screen and (min-width: 768px) {
+  .transactionFormContainer {
+    padding: 40px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .transactionFormContainer {
+    padding: 40px 40px;
+  }
 }
 
 .transactionForm {
@@ -17,6 +26,14 @@
   row-gap: 20px;
 
   max-width: 295px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .transactionForm {
+    max-width: 486px;
+    font-size: 16px;
+  }
 }
 
 .radioButtonsContainer {
@@ -95,13 +112,33 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-
   position: relative;
+
+  :global(.react-datepicker-popper) {
+    left: 50px !important;
+  }
+  width: 100%;
+}
+.fieldContainer:first-child {
+  width: 242px;
 }
 
+@media screen and (min-width: 768px) {
+  .fieldContainer {
+    gap: 8px;
+  }
+}
 .dateAndTimeContainer {
   display: flex;
   gap: 14px;
+
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 768px) {
+  .dateAndTimeContainer {
+    gap: 20px;
+  }
 }
 
 .timePicker {
@@ -131,6 +168,13 @@
   border: 1px solid #0ef387;
 }
 
+@media screen and (min-width: 768px) {
+  .sharedTextFieldStyles {
+    padding: 12px 18px;
+    height: 48px;
+  }
+}
+
 .sumField {
   padding-right: 52px;
 }
@@ -143,12 +187,15 @@
   position: absolute;
   bottom: 12px;
   right: 14px;
-
   text-transform: uppercase;
-
   color: rgba(250, 250, 250, 0.4);
-
   pointer-events: none;
+}
+@media screen and (min-width: 768px) {
+  .currencyLabel {
+    bottom: 14px;
+    right: 18px;
+  }
 }
 
 .sumField:not(:placeholder-shown) + .currencyLabel {
@@ -163,7 +210,7 @@
   overflow: hidden;
   border-radius: 12px;
 
-  height: 64px;
+  height: 91px;
   width: 100%;
 }
 
@@ -172,8 +219,18 @@
 }
 
 .commentField {
-  height: 64px;
+  height: 91px;
   width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .commentFieldWrapper {
+    height: 97px;
+  }
+
+  .commentField {
+    height: 97px;
+  }
 }
 
 .commentField.errorBorder {
@@ -233,6 +290,12 @@
   background-color: #0ebb69;
 }
 
+@media screen and (min-width: 768px) {
+  .sendButton {
+    height: 47px;
+  }
+}
+
 .error {
   position: absolute;
   bottom: -16px;
@@ -283,8 +346,25 @@
   pointer-events: none;
 }
 
+.clockIcon {
+  stroke: #fafafa;
+  top: 10px !important;
+  right: 11px !important;
+  padding: 0 !important;
+  /* pointer-events: none; */
+}
+
 .calendarIcon {
   stroke: #fafafa;
-
+  top: 10px !important;
+  right: 11px !important;
+  padding: 0 !important;
   /* pointer-events: none; */
+}
+
+@media only screen and (min-width: 768px) {
+  .calendarIcon {
+    top: 14px !important;
+    right: 14px !important;
+  }
 }

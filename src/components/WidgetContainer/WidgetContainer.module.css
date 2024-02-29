@@ -1,4 +1,5 @@
 .widgetContainer {
   border-radius: 30px;
   background-color: var(--background-secondary);
+  cursor: pointer;
 }

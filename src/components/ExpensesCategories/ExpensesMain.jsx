@@ -6,8 +6,10 @@ import { ExpensesDonut } from "./ExpensesDonut"
 import { selectTransactions } from "@/redux/transactions/slice"
 import randomColor from "randomcolor"
 import { ExpensesList } from "./ExpensesList"
+import { useParams } from "react-router-dom"
 
 const ExpensesMain = () => {
+  const { transactionsType } = useParams()
   const dispatch = useDispatch()
   const expenses = useSelector(selectTransactions)
   const categorySums = []
@@ -37,21 +39,26 @@ const ExpensesMain = () => {
     hue: "green",
   })
   useEffect(() => {
-    dispatch(fetchTransactionsThunk({type:"expenses", date:''}))
-  }, [dispatch])
+    dispatch(fetchTransactionsThunk({ type: transactionsType, date: "" }))
+  }, [dispatch, transactionsType])
 
   return (
     <div className={styles.container}>
-      {categorySums.length>0 ? 
+      {categorySums.length > 0 ? (
         <>
-          <p className={styles.text}>Expenses categories</p>
+          <p className={styles.text}>
+            {transactionsType === "expenses"
+              ? "Expenses categories"
+              : "Incomes categories"}
+          </p>
           <div className={styles.content}>
             <ExpensesDonut data={categorySums} colors={colors} />
             <ExpensesList data={categorySums} colors={colors} />
           </div>
         </>
-      : <p>No data</p>
-      }
+      ) : (
+        <p>No data</p>
+      )}
     </div>
   )
 }
