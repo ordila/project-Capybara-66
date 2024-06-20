@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://tim-pashkevych.github.io/goals-achiever-react/welcome">
-  <img src="./src/assets/images/readme/logo.png" width=200>
+<img src="./src/assets/readme/Logo.png" width=200>
   </a>
 </h1>
 <p align="center">ExpenceTracker is a free React web application that helps you manage your finances and develop healthy financial habits.<br/> Don't wait, start сontrol your money now!</p>
